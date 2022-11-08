@@ -126,3 +126,17 @@
 .sidebarOption--active p {
   display: inline !important;
 }
+
+/* SIDEBAR FOOTER STUFF */
+
+.sidebar__footer {
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar__footerIcons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
