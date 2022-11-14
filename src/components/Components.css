@@ -53,12 +53,11 @@
 
 /* SIDEBAR STUFF */
 
-/* .sidebar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: fit-content;
-} */
+.sidebar {
+  flex: 0.3;
+  max-width: 300px;
+  padding-right: 20px;
+}
 
 .sidebar__compose {
   display: flex !important;
