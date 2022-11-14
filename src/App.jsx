@@ -11,8 +11,8 @@ function App() {
     <div className="app">
       <Router>
         <Header />
-        <Sidebar />
         <div className="app__body">
+        <Sidebar />
           <Routes>
             <Route path="/" element={<EmailList />} />
             <Route path="/mail" element={<Mail />} />
