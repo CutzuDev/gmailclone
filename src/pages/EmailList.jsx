@@ -65,6 +65,7 @@ function EmailList() {
           description={"This is a testasdsadsadasdasdsadsadasdasdasdasda"}
           time={"10pm"}
         />
+
         <EmailRow
           title={"Twitch"}
           subject={"Hey fellow streamer"}

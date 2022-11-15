@@ -4,20 +4,30 @@ import {
   Delete,
   Email,
   Error,
+  ExitToApp,
   LabelImportant,
   MoreVert,
   MoveToInbox,
+  Print,
+  UnfoldMore,
   WatchLater,
 } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import "./Pages.css";
 
 function Mail() {
+  const navigation = useNavigate();
+
   return (
     <div className="mail">
       <div className="mail__tools">
         <div className="mail__toolsLeft">
-          <IconButton>
+          <IconButton
+            onClick={() => {
+              navigation("/");
+            }}
+          >
             <ArrowBack />
           </IconButton>
           <IconButton>
@@ -45,7 +55,33 @@ function Mail() {
             <MoreVert />
           </IconButton>
         </div>
-        <div className="mail__toolsRight"></div>
+        <div className="mail__toolsRight">
+          <IconButton>
+            <UnfoldMore />
+          </IconButton>
+          <IconButton>
+            <Print />
+          </IconButton>
+          <IconButton>
+            <ExitToApp />
+          </IconButton>
+        </div>
+      </div>
+      <div className="mail__body">
+        <div className="mail__bodyHeader">
+          <h2>Subject</h2>
+          <LabelImportant className="mail__important" />
+          <p>Title</p>
+          <p className="mail__time">10pm</p>
+        </div>
+        <div className="mail__message">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque,
+            error temporibus cumque vel distinctio repudiandae? Nobis
+            consectetur velit, id nemo fugit beatae illum obcaecati possimus
+            suscipit autem exercitationem repellendus sit?
+          </p>
+        </div>
       </div>
     </div>
   );
