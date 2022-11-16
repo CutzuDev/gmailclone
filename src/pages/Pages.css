@@ -78,7 +78,7 @@
   margin: 30px;
   background-color: white;
   padding: 20px;
-  height: 100vh;
+  height: calc(100vh - var(--header__height) - 70px);
   box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.24);
 }
 

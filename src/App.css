@@ -1,8 +1,9 @@
 .app {
-  height: 100vh;
+  height: fit-content;
+  position: relative;
 }
 
 .app__body {
   display: flex;
-  height: 100vh;
+  height: calc(100vh - var(--header__height));
 }
