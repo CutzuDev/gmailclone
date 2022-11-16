@@ -15,8 +15,25 @@ import {
 import "./Pages.css";
 import Section from "../components/Section";
 import EmailRow from "../components/EmailRow";
+import { useEffect, useState } from "react";
+import { db } from "../firebase";
 
 function EmailList() {
+  const [emails, setEmails] = useState([]);
+
+  useEffect(() => {
+    db.collection("emails")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) =>
+        setEmails(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }))
+        )
+      );
+  }, [emails]);
+
   return (
     <div className="emailList">
       <div className="emailList__settings">
@@ -53,25 +70,16 @@ function EmailList() {
         <Section Icon={LocalOffer} title="Promotions" color="green" />
       </div>
       <div className="emailList__list">
-        <EmailRow
-          title={"Twitch"}
-          subject={"Hey fellow streamer"}
-          description={"This is a testasdsadsadasdasdsadsadasdasdasdasda"}
-          time={"10pm"}
-        />
-        <EmailRow
-          title={"Twitch"}
-          subject={"Hey fellow streamer"}
-          description={"This is a testasdsadsadasdasdsadsadasdasdasdasda"}
-          time={"10pm"}
-        />
-
-        <EmailRow
-          title={"Twitch"}
-          subject={"Hey fellow streamer"}
-          description={"This is a testasdsadsadasdasdsadsadasdasdasdasda"}
-          time={"10pm"}
-        />
+        {emails.map(({ id, data: { to, subject, message, timestamp } }) => (
+          <EmailRow
+            id={id}
+            key={id}
+            title={to}
+            subject={subject}
+            description={message}
+            time={new Date(timestamp?.seconds * 1000).toUTCString()}
+          />
+        ))}
       </div>
     </div>
   );
